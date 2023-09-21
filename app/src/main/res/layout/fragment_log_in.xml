@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".auth.login.LogInFragment">
+
+    <include
+        android:id="@+id/toolbarSignInScreen"
+        layout="@layout/layout_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgSignInScreenBg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_300sdp"
+        android:background="@drawable/ic_language_screen_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarSignInScreen" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:background="@drawable/ic_splash_logo"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarSignInScreen" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcvLogIn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:strokeWidth="0dp"
+        app:cardElevation="@dimen/_2sdp"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineCenter">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <include
+                layout="@layout/layout_custom_edit_text"
+                android:id="@+id/tilMobile"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <include
+                layout="@layout/layout_custom_edit_text"
+                android:id="@+id/tilPassword"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilMobile"/>
+
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                style="?attr/textInputFilledStyle"-->
+<!--                android:id="@+id/tilMobile"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="@string/mobile_number_email_id"-->
+<!--                app:hintTextColor="@color/logInHint"-->
+<!--                android:textColorHint="@color/logInHint"-->
+<!--                app:boxBackgroundColor="@color/white"-->
+<!--                app:boxStrokeColor="@color/boxStrokeColor"-->
+<!--                android:layout_marginTop="@dimen/_40sdp"-->
+<!--                android:layout_marginHorizontal="@dimen/_15sdp"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etMobile"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:fontFamily="@font/poppins_semibold"-->
+<!--                    android:textCursorDrawable="@null"-->
+<!--                    android:textSize="@dimen/_14ssp"-->
+<!--                    android:textColor="@color/logInHint"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:maxLength="25" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                style="?attr/textInputFilledStyle"-->
+<!--                android:id="@+id/tilPassword"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="@string/password"-->
+<!--                app:hintTextColor="@color/logInHint"-->
+<!--                android:textColorHint="@color/logInHint"-->
+<!--                app:boxBackgroundColor="@color/white"-->
+<!--                app:boxStrokeColor="@color/boxStrokeColor"-->
+<!--                app:endIconDrawable="@drawable/ic_password_toggle"-->
+<!--                app:endIconMode="password_toggle"-->
+<!--                android:layout_marginTop="@dimen/_30sdp"-->
+<!--                android:layout_marginBottom="@dimen/_15sdp"-->
+<!--                android:layout_marginHorizontal="@dimen/_15sdp"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@+id/tilMobile">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/etPassword"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textSize="@dimen/_14ssp"-->
+<!--                    android:textColor="@color/logInHint"-->
+<!--                    android:fontFamily="@font/poppins_semibold"-->
+<!--                    android:textCursorDrawable="@null"-->
+<!--                    android:inputType="textPassword"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:maxLength="25" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtForgotPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/forgot_password"
+                android:textColor="@color/logInHint"
+                android:textSize="@dimen/_14ssp"
+                android:fontFamily="@font/poppins_regular"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilPassword" />
+
+            <include
+                layout="@layout/layout_custom_button"
+                android:id="@+id/btnLogIn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/_30sdp"
+                app:layout_constraintTop_toBottomOf="@+id/txtForgotPassword"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtAccountDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/don_t_have_an_account"
+        android:fontFamily="@font/poppins_regular"
+        android:textSize="@dimen/_14ssp"
+        android:textColor="@color/logInHint"
+        app:layout_constraintEnd_toEndOf="@+id/mcvLogIn"
+        app:layout_constraintStart_toStartOf="@+id/mcvLogIn"
+        app:layout_constraintTop_toBottomOf="@+id/mcvLogIn" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up"
+        android:fontFamily="@font/poppins_bold"
+        android:textColor="@color/purple"
+        android:textSize="@dimen/_14ssp"
+        app:layout_constraintStart_toStartOf="@+id/txtAccountDesc"
+        app:layout_constraintEnd_toEndOf="@+id/txtAccountDesc"
+        app:layout_constraintTop_toBottomOf="@+id/txtAccountDesc"
+        />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineCenter"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
