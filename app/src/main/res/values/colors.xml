@@ -8,4 +8,5 @@
     <color name="boxStrokeColor">#BCBCBC</color>
     <color name="boxStrokeWidth">#0E312B19</color>
     <color name="purple">#8C52F4</color>
+    <color name="errorColor">#C04000</color>
 </resources>

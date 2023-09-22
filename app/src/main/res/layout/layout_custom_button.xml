@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -8,6 +9,7 @@
         android:id="@+id/btnCustom"
         android:layout_width="0dp"
         android:layout_height="@dimen/_45sdp"
+        android:contentDescription="@string/btncustom"
         android:textColor="@color/white"
         android:textAlignment="center"
         android:textSize="@dimen/_18ssp"
@@ -18,6 +20,7 @@
         android:layout_marginHorizontal="@dimen/_19sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="VisualLintButtonSize" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
