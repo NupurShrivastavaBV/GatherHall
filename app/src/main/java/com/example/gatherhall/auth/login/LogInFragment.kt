@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.gatherhall.R
 import com.example.gatherhall.databinding.FragmentLogInBinding
 import com.example.gatherhall.helper.Constant
@@ -35,9 +36,6 @@ class LogInFragment : Fragment() {
 
         initXmlValues()
         initNavigation()
-        binding.btnLogIn.btnCustom.setOnClickListener {
-            validateAndNavigate()
-        }
 
         return binding.root
 
@@ -69,6 +67,18 @@ class LogInFragment : Fragment() {
     private fun initNavigation() {
         binding.toolbarSignInScreen.imgBackButton.setOnClickListener {
             requireActivity().finishAffinity()
+        }
+
+        binding.btnLogIn.btnCustom.setOnClickListener {
+            validateAndNavigate()
+        }
+
+        binding.txtSignUp.setOnClickListener {
+            findNavController().navigate(R.id.action_logInFragment_to_signUpFragment)
+        }
+
+        binding.txtForgotPassword.setOnClickListener {
+            findNavController().navigate(R.id.action_logInFragment_to_forgotPasswordFragment)
         }
     }
 

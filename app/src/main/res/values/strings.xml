@@ -14,4 +14,17 @@
     <string name="btncustom">btnCustom</string>
     <string name="customedittext">customEditText</string>
     <string name="edittext">EditText</string>
+    <string name="scrollViewRegister">scrollViewRegister</string>
+    <string name="registerScrollview">RegisterScrollView</string>
+    <string name="mobile">Mobile</string>
+    <string name="userPhoneNo">UserPhoneNo</string>
+    <string name="terms">Terms</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login">LogIn</string>
+    <string name="txt_forgot_password_label">Please enter your email address or mobile number. You will receive an OTP to reset your password.</string>
+    <string name="txt_otp_verification_label">OTP has been sent to your Mobile number</string>
+    <string name="txt_phone_no">(581) - 307-6902</string>
+    <string name="txt_label_password">Please enter new password.</string>
+    <string name="txt_new_password_label">Please enter new password.</string>
+    <string name="terms_and_condition">End User License Agreement</string>
 </resources>

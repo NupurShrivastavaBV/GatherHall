@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".auth.signup.SignUpFragment">
+
+    <include
+        android:id="@+id/toolbarRegisterScreen"
+        layout="@layout/layout_custom_toolbar" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:contentDescription="@string/registerScrollview"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarRegisterScreen">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgRegisterBg"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_300sdp"
+                android:background="@drawable/ic_screen_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardRegister"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:background="@color/white"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_2sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guidelineStart"
+                app:strokeWidth="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <include
+                        android:id="@+id/txtUserName"
+                        layout="@layout/layout_custom_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/_70sdp"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <include
+                        android:id="@+id/txtUserEmail"
+                        layout="@layout/layout_custom_edit_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        app:layout_constraintTop_toBottomOf="@+id/txtUserName" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtMobileLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_14sdp"
+                        android:text="@string/mobile"
+                        android:textColor="@color/logInHint"
+                        android:textAppearance="@style/TextLabel"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintStart_toStartOf="@+id/txtUserEmail"
+                        app:layout_constraintTop_toBottomOf="@+id/txtUserEmail" />
+
+                    <com.hbb20.CountryCodePicker
+                        android:id="@+id/countryCodePicker"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:ccpDialog_searchEditTextTint="@color/logInHint"
+                        app:ccpDialog_textColor="@color/logInHint"
+                        app:ccpDialog_showCloseIcon="true"
+                        app:ccpDialog_showPhoneCode="true"
+                        app:ccpDialog_showTitle="false"
+                        app:ccp_autoDetectCountry="true"
+                        app:ccp_autoDetectLanguage="true"
+                        app:ccp_showFlag="false"
+                        app:ccp_showNameCode="false"
+                        app:ccp_showArrow="false"
+                        android:padding="0dp"
+                        app:ccp_textSize="@dimen/_14ssp"
+                        android:layout_marginStart="@dimen/_6sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtMobileLabel" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/imgCountryDropDown"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_6sdp"
+                        android:layout_marginTop="@dimen/_2sdp"
+                        android:background="@drawable/ic_drop_down"
+                        app:layout_constraintBottom_toBottomOf="@id/countryCodePicker"
+                        app:layout_constraintStart_toEndOf="@+id/countryCodePicker"
+                        app:layout_constraintTop_toTopOf="@id/countryCodePicker"
+                        tools:ignore="ImageContrastCheck" />
+
+                    <View
+                        android:id="@+id/viewCCP"
+                        android:layout_width="0dp"
+                        android:layout_height="0.5dp"
+                        android:layout_marginStart="@dimen/_8sdp"
+                        android:background="@color/logInHint"
+                        app:layout_constraintEnd_toEndOf="@id/imgCountryDropDown"
+                        app:layout_constraintStart_toStartOf="@+id/countryCodePicker"
+                        app:layout_constraintTop_toBottomOf="@id/countryCodePicker" />
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tilPhoneNo"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_22sdp"
+                        android:layout_marginStart="@dimen/_18sdp"
+                        android:layout_marginEnd="@dimen/_12sdp"
+                        android:textAlignment="viewStart"
+                        android:textColorHint="@color/logInHint"
+                        app:errorEnabled="true"
+                        app:boxStrokeColor="@color/logInHint"
+                        android:contentDescription="@string/userPhoneNo"
+                        app:layout_constraintBottom_toBottomOf="@+id/countryCodePicker"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imgCountryDropDown"
+                        app:layout_constraintTop_toBottomOf="@+id/txtMobileLabel">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etPhoneNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:cursorVisible="false"
+                            android:focusable="false"
+                            android:imeOptions="actionDone"
+                            android:inputType="none"
+                            android:maxLength="15"
+                            android:maxLines="1"
+                            android:paddingStart="0dp"
+                            android:paddingEnd="0dp"
+                            android:theme="@style/Theme.App.Base"
+                            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,VisualLintTextFieldSize" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <include
+                        layout="@layout/layout_custom_edit_text"
+                        android:id="@+id/txtUserPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/tilPhoneNo" />
+
+                    <com.google.android.material.checkbox.MaterialCheckBox
+                        android:id="@+id/checkBoxTerms"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        android:layout_marginStart="@dimen/_12sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        app:buttonTint="@color/logInHint"
+                        app:useMaterialThemeColors="false"
+                        app:layout_constraintStart_toStartOf="@+id/txtUserPassword"
+                        app:layout_constraintTop_toBottomOf="@+id/txtUserPassword" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtTerms"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/terms"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="@color/logInHint"
+                        android:textSize="@dimen/_10ssp"
+                        android:lineSpacingExtra="1dp"
+                        android:maxLines="2"
+                        app:layout_constraintBottom_toBottomOf="@+id/checkBoxTerms"
+                        app:layout_constraintStart_toEndOf="@+id/checkBoxTerms"
+                        app:layout_constraintTop_toTopOf="@+id/checkBoxTerms" />
+
+                    <include
+                        layout="@layout/layout_custom_button"
+                        android:id="@+id/btnRegister"
+                        android:layout_height="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        app:layout_constraintTop_toBottomOf="@+id/checkBoxTerms" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtLabelAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="@string/already_have_an_account"
+                android:textSize="@dimen/_14ssp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/logInHint"
+                android:layout_marginTop="@dimen/_30sdp"
+                app:layout_constraintTop_toBottomOf="@+id/cardRegister"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/txtLogIn"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="@string/login"
+                android:textColor="@color/purple"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="@dimen/_14ssp"
+                android:paddingBottom="@dimen/_20sdp"
+                app:layout_constraintStart_toStartOf="@+id/txtLabelAccount"
+                app:layout_constraintEnd_toEndOf="@+id/txtLabelAccount"
+                app:layout_constraintTop_toBottomOf="@+id/txtLabelAccount" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgProfilePic"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="@dimen/_120sdp"
+                android:background="@drawable/user_profile_picture"
+                android:scaleType="centerCrop"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:translationZ="@dimen/_140sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_camera"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="@+id/imgProfilePic"
+                app:layout_constraintTop_toBottomOf="@+id/guidelineStart"
+                android:translationZ="@dimen/_140sdp"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.14" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

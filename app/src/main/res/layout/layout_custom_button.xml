@@ -17,7 +17,7 @@
         app:backgroundTint="@null"
         android:background="@drawable/button_gradient"
         android:layout_marginBottom="@dimen/_25sdp"
-        android:layout_marginHorizontal="@dimen/_19sdp"
+        android:layout_marginHorizontal="@dimen/_12sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
