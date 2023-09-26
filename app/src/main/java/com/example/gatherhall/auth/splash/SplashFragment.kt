@@ -10,18 +10,22 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.gatherhall.R
 import com.example.gatherhall.databinding.FragmentSplashBinding
+import com.example.gatherhall.helper.Constant
+import com.example.gatherhall.helper.PrefHelper
 
 
 class SplashFragment : Fragment() {
 
     private var _binding: FragmentSplashBinding? = null
     private val binding get() = _binding!!
+    private lateinit var prefHelper: PrefHelper
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSplashBinding.inflate(inflater, container, false)
+        prefHelper = PrefHelper(requireContext())
 
         initSplash()
 
@@ -33,7 +37,12 @@ class SplashFragment : Fragment() {
     private fun initSplash(){
         val handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
-            findNavController().navigate(R.id.action_splashFragment_to_selectLanguageFragment)
+            if(!prefHelper.getBoolean(Constant.PREF_USER_AGREE)){
+                findNavController().navigate(R.id.action_splashFragment_to_userAgreementFragment)
+            }
+            else{
+                findNavController().navigate(R.id.action_splashFragment_to_selectLanguageFragment)
+            }
         },2000)
     }
 }

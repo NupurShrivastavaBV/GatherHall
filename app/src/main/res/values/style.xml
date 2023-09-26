@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!---for edit text -->
     <style name="TILStyle">
         <item name="android:lines">1</item>
         <item name="singleLine">true</item>
@@ -10,16 +11,22 @@
         <item name="android:paddingBottom">@dimen/_10sdp</item>
     </style>
 
-
+    <!---for edit text -->
     <style name="Theme.App.Base" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorControlNormal">@color/logInHint</item>
         <item name="colorControlActivated">@color/logInHint</item>
         <item name="colorControlHighlight">@color/logInHint</item>
     </style>
-    
 
+    <!---for edit text -->
     <style name="TextLabel" parent="TextAppearance.Design.Hint">
-<!--        <item name="android:textSize">@dimen/_11ssp</item>-->
         <item name="android:paddingBottom">@dimen/_18sdp</item>
     </style>
+
+
+
+
+
+
+
 </resources>

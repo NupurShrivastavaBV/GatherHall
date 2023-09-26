@@ -10,6 +10,7 @@
         android:layout_height="@dimen/_60sdp"
         app:strokeWidth="0dp"
         app:cardBackgroundColor="@color/white"
+
         app:cardElevation="@dimen/_4sdp"
         app:strokeColor="@color/languageCardColor"
         app:cardCornerRadius="@dimen/_15sdp"

@@ -7,15 +7,25 @@
     android:background="@color/white"
     tools:context=".auth.signup.SignUpFragment">
 
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgSignInBg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_285sdp"
+        android:background="@drawable/ic_screen_background"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
     <include
-        android:id="@+id/toolbarRegisterScreen"
-        layout="@layout/layout_custom_toolbar" />
+        layout="@layout/layout_custom_toolbar"
+        android:id="@+id/toolbarRegisterScreen"/>
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:contentDescription="@string/registerScrollview"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbarRegisterScreen">
@@ -24,16 +34,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imgRegisterBg"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_300sdp"
-                android:background="@drawable/ic_screen_background"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
 
             <com.google.android.material.card.MaterialCardView
@@ -140,17 +140,17 @@
                         app:layout_constraintStart_toEndOf="@+id/imgCountryDropDown"
                         app:layout_constraintTop_toBottomOf="@+id/txtMobileLabel">
 
-                        <androidx.appcompat.widget.AppCompatEditText
+                            <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/etPhoneNumber"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:cursorVisible="false"
-                            android:focusable="false"
-                            android:imeOptions="actionDone"
-                            android:inputType="none"
-                            android:maxLength="15"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:cursorVisible="true"
+                            android:textCursorDrawable="@null"
+                            android:maxLength="14"
                             android:maxLines="1"
-                            android:paddingStart="0dp"
+                            android:paddingStart="@dimen/_2sdp"
                             android:paddingEnd="0dp"
                             android:theme="@style/Theme.App.Base"
                             tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck,VisualLintTextFieldSize" />
@@ -159,7 +159,7 @@
 
 
                     <include
-                        layout="@layout/layout_custom_edit_text"
+                        layout="@layout/layout_password_custom_edit_text"
                         android:id="@+id/txtUserPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -169,14 +169,16 @@
                         android:id="@+id/checkBoxTerms"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:minWidth="0dp"
-                        android:minHeight="0dp"
                         android:layout_marginStart="@dimen/_12sdp"
                         android:layout_marginTop="@dimen/_5sdp"
-                        app:buttonTint="@color/logInHint"
-                        app:useMaterialThemeColors="false"
+                        android:minWidth="0dp"
+                        android:minHeight="0dp"
+                        app:buttonTint="@null"
+                        android:buttonTint="@null"
+                        android:button="@drawable/cb_checkbox_selector"
                         app:layout_constraintStart_toStartOf="@+id/txtUserPassword"
-                        app:layout_constraintTop_toBottomOf="@+id/txtUserPassword" />
+                        app:layout_constraintTop_toBottomOf="@+id/txtUserPassword"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                     <com.google.android.material.textview.MaterialTextView
                         android:id="@+id/txtTerms"
@@ -188,7 +190,7 @@
                         android:textSize="@dimen/_10ssp"
                         android:lineSpacingExtra="1dp"
                         android:maxLines="2"
-                        app:layout_constraintBottom_toBottomOf="@+id/checkBoxTerms"
+                        android:layout_marginStart="@dimen/_5sdp"
                         app:layout_constraintStart_toEndOf="@+id/checkBoxTerms"
                         app:layout_constraintTop_toTopOf="@+id/checkBoxTerms" />
 
@@ -232,28 +234,6 @@
                 app:layout_constraintStart_toStartOf="@+id/txtLabelAccount"
                 app:layout_constraintEnd_toEndOf="@+id/txtLabelAccount"
                 app:layout_constraintTop_toBottomOf="@+id/txtLabelAccount" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imgProfilePic"
-                android:layout_width="@dimen/_120sdp"
-                android:layout_height="@dimen/_120sdp"
-                android:background="@drawable/user_profile_picture"
-                android:scaleType="centerCrop"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:translationZ="@dimen/_140sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imgCamera"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_camera"
-                android:layout_marginTop="@dimen/_10sdp"
-                app:layout_constraintEnd_toEndOf="@+id/imgProfilePic"
-                app:layout_constraintTop_toBottomOf="@+id/guidelineStart"
-                android:translationZ="@dimen/_140sdp"/>
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guidelineStart"

@@ -45,9 +45,6 @@ class SelectLanguageFragment : Fragment() {
 
     //Handling Navigation
     private fun initNavigation(){
-        binding.toolbarLanguageScreen.imgBackButton.setOnClickListener {
-            requireActivity().finishAffinity()
-        }
 
         binding.btnContinue.btnCustom.setOnClickListener {
             findNavController().navigate(R.id.action_selectLanguageFragment_to_logInFragment)

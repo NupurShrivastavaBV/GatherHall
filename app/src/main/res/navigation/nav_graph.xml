@@ -11,8 +11,14 @@
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
+            android:id="@+id/action_splashFragment_to_userAgreementFragment"
+            app:destination="@id/userAgreementFragment" />
+        <action
             android:id="@+id/action_splashFragment_to_selectLanguageFragment"
             app:destination="@id/selectLanguageFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
     </fragment>
     <fragment
         android:id="@+id/selectLanguageFragment"
@@ -66,10 +72,22 @@
         <action
             android:id="@+id/action_resetPasswordFragment2_to_changePasswordFragment"
             app:destination="@id/changePasswordFragment" />
+        <action
+            android:id="@+id/action_resetPasswordFragment2_to_logInFragment"
+            app:destination="@id/logInFragment" />
     </fragment>
     <fragment
         android:id="@+id/changePasswordFragment"
         android:name="com.example.gatherhall.auth.forgotpassword.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
+    <fragment
+        android:id="@+id/userAgreementFragment"
+        android:name="com.example.gatherhall.auth.useragreement.UserAgreementFragment"
+        android:label="fragment_user_agreement"
+        tools:layout="@layout/fragment_user_agreement" >
+        <action
+            android:id="@+id/action_userAgreementFragment_to_selectLanguageFragment"
+            app:destination="@id/selectLanguageFragment" />
+    </fragment>
 </navigation>

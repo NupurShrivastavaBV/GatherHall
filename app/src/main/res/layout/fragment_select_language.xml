@@ -7,19 +7,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".auth.language.ui.SelectLanguageFragment">
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgLanguageScreenBg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_screen_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <include
         android:id="@+id/toolbarLanguageScreen"
         layout="@layout/layout_custom_toolbar"
         android:layout_width="match_parent"
         android:layout_height="0dp" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imgLanguageScreenBg"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_300sdp"
-        android:background="@drawable/ic_screen_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarLanguageScreen"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txtGreetingLabel"
@@ -49,25 +52,35 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvLanguage"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_corners"
-        android:layout_marginHorizontal="@dimen/_16sdp"
+        android:background="@color/colorTransparent"
+        android:layout_margin="@dimen/_12sdp"
+        android:overScrollMode="always"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineCenter"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/guidelineStart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <include
         android:id="@+id/btnContinue"
         layout="@layout/layout_custom_button" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineCenter"
+        android:id="@+id/guidelineStart"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.475"/>
+        app:layout_constraintGuide_percent="0.4"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEnd"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -1,19 +1,15 @@
 package com.example.gatherhall.auth.login
 
-import android.content.res.ColorStateList
-import android.graphics.Color
-import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Editable
-import android.text.InputType
 import android.text.TextWatcher
 import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.core.view.doOnLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -49,6 +45,7 @@ class LogInFragment : Fragment() {
     }
 
 
+
     //Setting the values
     private fun initXmlValues() {
         binding.btnLogIn.btnCustom.text = Constant.logIn
@@ -57,17 +54,11 @@ class LogInFragment : Fragment() {
         binding.txtEmail.inputLayout.setHintStyle(R.font.poppins_regular)
         binding.txtPassword.inputLayout.hint = Constant.password
         binding.txtPassword.inputLayout.setHintStyle(R.font.poppins_regular)
-        binding.txtPassword.editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-        binding.txtPassword.inputLayout.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
-        binding.txtPassword.inputLayout.setEndIconDrawable(R.drawable.ic_password_toggle)
-
+        binding.txtPassword.editText.imeOptions = EditorInfo.IME_ACTION_DONE
     }
 
     //handling the navigation
     private fun initNavigation() {
-        binding.toolbarSignInScreen.imgBackButton.setOnClickListener {
-            requireActivity().finishAffinity()
-        }
 
         binding.btnLogIn.btnCustom.setOnClickListener {
             validateAndNavigate()
@@ -89,48 +80,59 @@ class LogInFragment : Fragment() {
 
     // Function to validate phone number
     private fun isValidPhoneNumber(phone: String): Boolean {
-        return Patterns.PHONE.matcher(phone).matches()
+        return phone.matches(Regex("^\\d{8,14}$"))
     }
 
 
-    //to remove the focus from error
-    private fun clearError() {
+    // Function to validate and navigate
+    private fun validateAndNavigate() {
+        val etUserCred = binding.txtEmail.editText.text.toString().trim()
+        val etUserPassword = binding.txtPassword.editText.text.toString().trim()
+
+        clearError()
+
+        if (etUserCred.isEmpty()) {
+            binding.txtEmail.inputLayout.error = Constant.UserCredEmptyError
+            binding.txtEmail.inputLayout.requestFocus()
+            textWatcher(binding.txtEmail.editText)
+            return
+        } else if (!isValidEmail(etUserCred) && !isValidPhoneNumber(etUserCred)) {
+            binding.txtEmail.inputLayout.error = Constant.UserCredError
+            binding.txtEmail.inputLayout.requestFocus()
+            textWatcher(binding.txtEmail.editText)
+            return
+        }
+
+        if (etUserPassword.isEmpty()) {
+            binding.txtPassword.inputLayout.error = Constant.PasswordError
+            binding.txtPassword.inputLayout.requestFocus()
+            textWatcher(binding.txtPassword.editText)
+            return
+        } else if (etUserPassword.length < 6) {
+            binding.txtPassword.inputLayout.error = Constant.PasswordLengthError
+            binding.txtPassword.inputLayout.requestFocus()
+            textWatcher(binding.txtPassword.editText)
+            return
+        }
+
+        // If all validations pass, you can navigate or perform other actions here
+        Toast.makeText(requireContext(), Constant.loggedIn, Toast.LENGTH_LONG).show()
+    }
+
+    // Function to clear error messages
+     fun clearError() {
         binding.txtEmail.inputLayout.error = null
         binding.txtPassword.inputLayout.error = null
     }
 
+     private fun textWatcher(view: EditText) {
+        view.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                clearError()
+            }
 
-    private fun validateAndNavigate() {
-        val etUserCred = binding.txtEmail.editText.text.toString()
-        val etUserPassword = binding.txtPassword.editText.text.toString()
-
-        clearError()
-
-        if (!isValidEmail(etUserCred) && !isValidPhoneNumber(etUserCred)) {
-            binding.txtEmail.inputLayout.error = "Invalid Email or Phone No"
-            binding.txtEmail.inputLayout.requestFocus()
-            binding.txtEmail.editText.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    clearError()
-                }
-                override fun afterTextChanged(s: Editable?) {}
-            })
-        }
-        else if (etUserPassword.isEmpty() || etUserPassword.length < 6) {
-            binding.txtPassword.inputLayout.error = "Password should be at least 6 characters long"
-            binding.txtPassword.inputLayout.requestFocus()
-            binding.txtPassword.editText.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    clearError()
-                }
-
-                override fun afterTextChanged(s: Editable?) {}
-            })
-        } else {
-            Toast.makeText(requireContext(), "Logged In", Toast.LENGTH_LONG).show()
-        }
+            override fun afterTextChanged(s: Editable?) {}
+        })
     }
 }

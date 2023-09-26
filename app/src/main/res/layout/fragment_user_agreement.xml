@@ -3,44 +3,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".auth.useragreement.UserAgreementFragment">
 
-    <include layout="@layout/layout_custom_toolbar_second"
-        android:id="@+id/toolbarUserAgreement"/>
-    
-    
-    <ScrollView
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbarUserAgreement"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:fillViewport="true"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:elevation="5dp"
+        android:backgroundTint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtToolbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/terms_and_condition"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/logInHint"
+            android:textSize="@dimen/_16ssp"
+            android:padding="@dimen/_10ssp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_gravity="center" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <WebView
+        android:id="@+id/webViewEndUserAgreement"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textAlignment="viewStart"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarUserAgreement"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cl"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/purple"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarUserAgreement">
-        
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            
-            <com.google.android.material.textview.MaterialTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:textAlignment="viewStart"
-                android:layout_margin="@dimen/_10sdp"/>
+        />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="@dimen/_15sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:background="@color/lightGrey"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
-            
-            
-            
-        </androidx.constraintlayout.widget.ConstraintLayout>
-        
-        
-    </ScrollView>
-        
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkBoxEndUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            app:buttonTint="@null"
+            android:buttonTint="@null"
+            android:button="@drawable/cb_checkbox_selector"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/txt_user_agree"
+            android:textAlignment="viewStart"
+            android:textColor="@color/logInHint"
+            app:layout_constraintEnd_toStartOf="@+id/btnContinueEndUser"
+            app:layout_constraintStart_toEndOf="@+id/checkBoxEndUser"
+            app:layout_constraintTop_toTopOf="@+id/checkBoxEndUser"
+            tools:ignore="TextContrastCheck" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnContinueEndUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_gradient"
+            android:text="@string/continue_"
+            android:textColor="@color/white"
+            app:backgroundTint="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

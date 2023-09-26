@@ -25,9 +25,9 @@ class ResetPasswordFragment : Fragment() {
     ): View? {
         _binding = FragmentResetPasswordBinding.inflate(inflater, container, false)
 
-        initTextValues(binding.txtNewPassword.inputLayout,binding.txtNewPassword.editText,Constant.newPassword)
-        initTextValues(binding.txtConfirmNewPassword.inputLayout,binding.txtConfirmNewPassword.editText,Constant.confirmNewPassword)
+
         initXMLValues()
+        initNavigate()
 
 
         return binding.root
@@ -36,14 +36,16 @@ class ResetPasswordFragment : Fragment() {
     private fun initTextValues(viewLayout: TextInputLayout, viewEdit: TextInputEditText, hintText : String){
         viewLayout.hint = hintText
         viewLayout.setHintStyle(R.font.poppins_regular)
-        viewEdit.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-        viewLayout.endIconMode = TextInputLayout.END_ICON_PASSWORD_TOGGLE
-        viewLayout.setEndIconDrawable(R.drawable.ic_password_toggle)
     }
 
     private fun initXMLValues(){
         binding.btnResetPassword.btnCustom.text = Constant.reset
-        binding.toolbarResetPassword.txtToolbarTitle.text = Constant.logIn
+        binding.toolbarResetPassword.txtToolbarTitle.text = Constant.resetPassword
+        binding.toolbarResetPassword.imgBackButton.visibility = View.VISIBLE
+
+        initTextValues(binding.txtNewPassword.inputLayout,binding.txtNewPassword.editText,Constant.newPassword)
+        initTextValues(binding.txtConfirmNewPassword.inputLayout,binding.txtConfirmNewPassword.editText,Constant.confirmNewPassword)
+
     }
 
     private fun TextInputLayout.setHintStyle(id: Int) {
@@ -54,8 +56,16 @@ class ResetPasswordFragment : Fragment() {
 
     private fun initNavigate(){
         binding.btnResetPassword.btnCustom.setOnClickListener {
-            findNavController().navigate(R.id.action_resetPasswordFragment2_to_changePasswordFragment)
+            findNavController().navigate(R.id.action_resetPasswordFragment2_to_logInFragment)
         }
+        binding.toolbarResetPassword.imgBackButton.setOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
+
+    private fun validateAndNavigate(){
+        val txtNewPassword = binding.txtNewPassword.editText.text.toString()
+        val txtConfirmNewPassword = binding.txtConfirmNewPassword.editText.text.toString()
     }
 
 }

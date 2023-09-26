@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/clLogin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".auth.login.LogInFragment">
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgSignInScreenBg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:background="@drawable/ic_screen_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="VisualLintBounds" />
 
     <include
         android:id="@+id/toolbarSignInScreen"
@@ -14,125 +26,133 @@
         android:layout_width="match_parent"
         android:layout_height="0dp" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imgSignInScreenBg"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_300sdp"
-        android:background="@drawable/ic_screen_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarSignInScreen" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:background="@drawable/ic_splash_logo"
-        android:layout_marginTop="@dimen/_30sdp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarSignInScreen" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardLogIn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="@dimen/_10sdp"
-        app:strokeWidth="0dp"
-        app:cardElevation="@dimen/_2sdp"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/guidelineCenter">
+        app:layout_constraintTop_toBottomOf="@+id/toolbarSignInScreen"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white">
+            android:layout_height="wrap_content">
 
-            <include
-                layout="@layout/layout_custom_edit_text"
-                android:id="@+id/txtEmail"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="@dimen/_15sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guidelineStasrt"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.05" />
-
-            <include
-                layout="@layout/layout_custom_edit_text"
-                android:id="@+id/txtPassword"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtEmail"/>
-
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/txtForgotPassword"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imgLogo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/forgot_password"
-                android:textColor="@color/logInHint"
-                android:textSize="@dimen/_15ssp"
-                android:fontFamily="@font/poppins_regular"
-                android:layout_marginTop="@dimen/_2sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
+                android:background="@drawable/ic_splash_logo"
+                app:layout_constraintBottom_toTopOf="@+id/cardLogIn"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/cl" />
 
-            <include
-                layout="@layout/layout_custom_button"
-                android:id="@+id/btnLogIn"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardLogIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_15sdp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="@dimen/_2sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guidelineCenter"
+            app:strokeWidth="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/_30sdp"
-                app:layout_constraintTop_toBottomOf="@+id/txtForgotPassword"/>
+                android:background="@color/white">
+
+                <include
+                    android:id="@+id/txtEmail"
+                    layout="@layout/layout_custom_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guidelineStasrt"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.05" />
+
+                <include
+                    android:id="@+id/txtPassword"
+                    layout="@layout/layout_password_custom_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtForgotPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@string/forgot_password"
+                    android:textColor="@color/logInHint"
+                    android:textSize="@dimen/_15ssp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+
+                <include
+                    android:id="@+id/btnLogIn"
+                    layout="@layout/layout_custom_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/txtForgotPassword" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtAccountDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/don_t_have_an_account"
+            android:textColor="@color/logInHint"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="@+id/cardLogIn"
+            app:layout_constraintStart_toStartOf="@+id/cardLogIn"
+            app:layout_constraintTop_toBottomOf="@+id/cardLogIn" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/sign_up"
+            android:textColor="@color/purple"
+            android:textSize="@dimen/_14ssp"
+            app:layout_constraintEnd_toEndOf="@+id/txtAccountDesc"
+            app:layout_constraintStart_toStartOf="@+id/txtAccountDesc"
+            app:layout_constraintTop_toBottomOf="@+id/txtAccountDesc" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guidelineCenter"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.35"/>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
 
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txtAccountDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:text="@string/don_t_have_an_account"
-        android:fontFamily="@font/poppins_regular"
-        android:textSize="@dimen/_14ssp"
-        android:textColor="@color/logInHint"
-        app:layout_constraintEnd_toEndOf="@+id/cardLogIn"
-        app:layout_constraintStart_toStartOf="@+id/cardLogIn"
-        app:layout_constraintTop_toBottomOf="@+id/cardLogIn" />
-
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txtSignUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sign_up"
-        android:fontFamily="@font/poppins_bold"
-        android:textColor="@color/purple"
-        android:textSize="@dimen/_14ssp"
-        app:layout_constraintStart_toStartOf="@+id/txtAccountDesc"
-        app:layout_constraintEnd_toEndOf="@+id/txtAccountDesc"
-        app:layout_constraintTop_toBottomOf="@+id/txtAccountDesc"
-        />
-
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guidelineCenter"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
-
+    </androidx.core.widget.NestedScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,4 +9,6 @@
     <color name="boxStrokeWidth">#0E312B19</color>
     <color name="purple">#8C52F4</color>
     <color name="errorColor">#C04000</color>
+    <color name="lightGrey">#D3D3D3</color>
+    <color name="colorTransparent">#00000000</color>
 </resources>
